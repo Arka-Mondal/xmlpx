@@ -58,9 +58,12 @@ int xmlpx_destroy(xmldoc_t *xml_doc)
   if (xml_doc == NULL || xml_doc->root == NULL)
     return -1;
 
-  // free(xml_doc->buf);
-  // xml_doc->buf = NULL;
-  // xml_doc->size = 0;
+  if (xml_doc->encoding)
+    free(xml_doc->encoding);
+  if (xml_doc->version)
+    free(xml_doc->version);
+
+  xmlpx_node_destroy(xml_doc->root);
 
   return 0;
 }

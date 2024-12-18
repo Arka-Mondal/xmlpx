@@ -1,3 +1,4 @@
 xmlpx
 *.o
 *.xml
+lib/*
